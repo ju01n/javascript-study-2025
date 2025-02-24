@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lazy loading</title>
+  <style>
+    *{margin:0;padding:0}
+    img{display:block;width:400px;height:300px;margin:10px auto;object-fit:cover}
+  </style>
+</head>
+
+<body>
+  <img src="https://via.placeholder.com/400x300" data-src="https://i1.sndcdn.com/artworks-NPygsH8luchfdGqC-vvYcyw-t500x500.jpg">
+  <img src="https://via.placeholder.com/400x300" data-src="https://i1.sndcdn.com/artworks-NPygsH8luchfdGqC-vvYcyw-t500x500.jpg">
+  <img src="https://via.placeholder.com/400x300" data-src="https://i1.sndcdn.com/artworks-NPygsH8luchfdGqC-vvYcyw-t500x500.jpg">
+  <img src="https://via.placeholder.com/400x300" data-src="https://i1.sndcdn.com/artworks-NPygsH8luchfdGqC-vvYcyw-t500x500.jpg">
+  <img src="https://via.placeholder.com/400x300" data-src="https://i1.sndcdn.com/artworks-NPygsH8luchfdGqC-vvYcyw-t500x500.jpg">
+  <img src="https://via.placeholder.com/400x300" data-src="https://i1.sndcdn.com/artworks-NPygsH8luchfdGqC-vvYcyw-t500x500.jpg">
+  <img src="https://via.placeholder.com/400x300" data-src="https://i1.sndcdn.com/artworks-NPygsH8luchfdGqC-vvYcyw-t500x500.jpg">
+
+
+  <script>
+    const observer = new IntersectionObserver(function(entries, observer) {
+      console.log(entries);
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.src = entry.target.dataset.src;
+
+          observer.unobserve(entry.target);
+        }
+      })
+    }, {
+      threshold: 1,
+    })
+
+    const imgs = document.querySelectorAll('img');
+    imgs.forEach((img) => {
+      observer.observe(img);
+    })
+  </script>
+</body>
+
+</html>
