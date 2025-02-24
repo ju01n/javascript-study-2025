@@ -1,3 +1,4 @@
+// 변수
 const appendTens = document.getElementById('tens');
 const appendSeconds = document.getElementById('seconds');
 const buttonStart = document.getElementById('button-start');
@@ -8,14 +9,18 @@ let seconds = 0;
 let tens = 0;
 let interval;
 
+// start버튼 클릭 동작
 buttonStart.onclick = function() {
+  clearInterval(interval);
   interval = setInterval(startTimer, 10); // ==> clearInterval 하면 해제
 }
 
+// stop버튼 클릭 동작
 buttonStop.onclick = function() {
   clearInterval(interval);
 }
 
+// reset버튼 클릭 동작
 buttonReset.onclick = function(){
   clearInterval(interval); // 멈추고 리셋해야됨
   seconds = 0;
